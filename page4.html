@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Imperial Partners</title>
+
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+color: white;
+background-image: url('Bg for website.png');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+}
+
+header {
+background: rgba(0,0,0,0.7);
+padding: 20px;
+text-align: center;
+}
+
+header img {
+width: 120px;
+}
+
+h1, h2 {
+text-align: center;
+}
+
+.section {
+max-width: 850px;
+margin: auto;
+padding: 25px;
+background: rgba(0,0,0,0.55);
+border-radius: 10px;
+margin-top: 30px;
+}
+
+input, textarea {
+width: 95%;
+padding: 12px;
+margin: 10px 0;
+border-radius: 5px;
+border: none;
+}
+
+button {
+padding: 12px 25px;
+font-size: 16px;
+background: white;
+color: black;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+button:hover {
+background: grey;
+}
+
+.error {
+color: #ff4d4d;
+font-size: 18px;
+margin-top: 10px;
+}
+
+.success {
+color: lightgreen;
+font-size: 18px;
+margin-top: 10px;
+}
+
+.contact-info p {
+font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<img src="Capture.PNG" alt="Logo">
+</header>
+
+<h1>Contact Us</h1>
+
+<!-- Contact Information -->
+<div class="section contact-info">
+<h2>Contact Details</h2>
+<p><b>Email:</b> support@imperialpartners.com</p>
+<p><b>Phone:</b> +91 9876543210</p>
+<p><b>Location:</b> Mumbai, India</p>
+<p><b>Working Hours:</b> 10 AM – 6 PM (Mon–Sat)</p>
+</div>
+
+<!-- Contact Form -->
+<div class="section">
+<h2>Send Us a Message</h2>
+
+<form id="contactForm" novalidate>
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="email" id="email" placeholder="Your Email" required>
+
+<input type="text" id="subject" placeholder="Subject" required>
+
+<textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+
+<button type="submit">Submit</button>
+
+<p id="error" class="error"></p>
+<p id="success" class="success"></p>
+
+</form>
+</div>
+
+<!-- ⭐ JAVASCRIPT VALIDATION ⭐ -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+event.preventDefault();
+
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let subject = document.getElementById("subject").value.trim();
+let message = document.getElementById("message").value.trim();
+
+let error = document.getElementById("error");
+let success = document.getElementById("success");
+
+error.textContent = "";
+success.textContent = "";
+
+// Name Validation
+if (name.length < 3) {
+error.textContent = "Name must be at least 3 characters long.";
+return;
+}
+
+// Email Validation
+let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailPattern.test(email)) {
+error.textContent = "Please enter a valid email address.";
+return;
+}
+
+// Subject Validation
+if (subject.length < 3) {
+error.textContent = "Subject must be at least 3 characters long.";
+return;
+}
+
+// Message Validation
+if (message.length < 10) {
+error.textContent = "Message must be at least 10 characters long.";
+return;
+}
+
+// Success Message
+success.textContent = "Message sent successfully!";
+});
+</script>
+
+</body>
+</html>
